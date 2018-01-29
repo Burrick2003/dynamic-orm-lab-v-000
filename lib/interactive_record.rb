@@ -52,19 +52,12 @@ class InteractiveRecord
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
-  def self.find_by2(attribute_hash)
-     value = attribute_hash.values.first
-     formatted_value = value.class == Fixnum ? value : "'#{value}'"
-     sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
-     DB[:conn].execute(sql)
-   end
+
   def self.find_by(input) #input is a hasheshes
     first_hash = input.values.first
     input_value = first_hash.class == Fixnum ? first_hash : "'#{first_hash}'"
     sql = "SELECT * FROM #{self.table_name} WHERE #{input.keys.first} = #{input_value}"
     DB[:conn].execute(sql)
   end
-
-
 
 end
