@@ -60,7 +60,7 @@ class InteractiveRecord
    end
   def self.find_by2(input) #input is a hasheshes
     first_hash = input.values.first
-    input_value = first_hash.class == Fixnum ? value : "'#{first_hash}'"
+    input_value = first_hash.class == Fixnum ? first_hash : "'#{first_hash}'"
     sql = "SELECT * FROM #{self.table_name} WHERE #{input.keys.first} = #{input_value}"
     DB[:conn].execute(sql)
   end
